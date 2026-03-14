@@ -2,7 +2,7 @@ services:
   hawser:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - docker/hawser_stacks:/data/stacks
+      - /docker/hawser/hawser_stacks:/data/stacks
     ports:
       - 2376:2376
     environment:
