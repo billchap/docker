@@ -1,0 +1,10 @@
+services:
+  hawser:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - hawser_stacks:/data/stacks
+    ports:
+      - 2376:2376
+    environment:
+      - TOKEN=02281998
+    image: ghcr.io/finsys/hawser:latest
