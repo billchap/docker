@@ -5,8 +5,8 @@ services:
     image: rancher/rancher:latest
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      - "8007:80"
+      - "7443:443"
     volumes:
       - /docker/rancher-data:/var/lib/rancher
     privileged: true
