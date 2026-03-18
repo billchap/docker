@@ -8,7 +8,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - rancher-data:/var/lib/rancher
+      - /docker/rancher-data:/var/lib/rancher
     environment:
       # Optional: set a specific hostname for Rancher if needed
       # CATTLE_SERVER_URL: "https://your-server-url"
