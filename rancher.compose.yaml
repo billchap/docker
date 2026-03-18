@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  rancher:
+    image: rancher/rancher:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - rancher-data:/var/lib/rancher
+    environment:
+      # Optional: set a specific hostname for Rancher if needed
+      # CATTLE_SERVER_URL: "https://your-server-url"
+      # Optional: use a specific system catalog branch
+      # CATTLE_SYSTEM_CATALOG: "external"
+      # Optional: accept the end-user license agreement
+      # CATTLE_EULA_ACCEPTED: "true"
+
+volumes:
+  rancher-data:
