@@ -9,6 +9,7 @@ services:
       - "443:443"
     volumes:
       - /docker/rancher-data:/var/lib/rancher
+    privileged:
 
 volumes:
   rancher-data:
