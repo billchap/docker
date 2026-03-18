@@ -8,3 +8,4 @@ services:
     environment:
       - TOKEN=02281998
     image: ghcr.io/finsys/hawser:latest
+    restart: unless-stopped
