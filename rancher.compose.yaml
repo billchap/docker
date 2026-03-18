@@ -10,8 +10,6 @@ services:
     volumes:
       - /docker/rancher-data:/var/lib/rancher
     environment:
-      - Optional: accept the end-user license agreement
-      - CATTLE_EULA_ACCEPTED: "true"
 
 volumes:
   rancher-data:
