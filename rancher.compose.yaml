@@ -10,12 +10,8 @@ services:
     volumes:
       - /docker/rancher-data:/var/lib/rancher
     environment:
-      # Optional: set a specific hostname for Rancher if needed
-      # CATTLE_SERVER_URL: "https://your-server-url"
-      # Optional: use a specific system catalog branch
-      # CATTLE_SYSTEM_CATALOG: "external"
-      # Optional: accept the end-user license agreement
-      # CATTLE_EULA_ACCEPTED: "true"
+      - Optional: accept the end-user license agreement
+      - CATTLE_EULA_ACCEPTED: "true"
 
 volumes:
   rancher-data:
