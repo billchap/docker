@@ -23,4 +23,7 @@ services:
       - NET_RAW
       - NET_ADMIN
       - NET_BIND_SERVICE
+      - CHOWN
+      - SETUID
+      - SETGID
     read_only: true
