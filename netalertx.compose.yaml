@@ -26,4 +26,3 @@ services:
       - CHOWN
       - SETUID
       - SETGID
-    read_only: true
