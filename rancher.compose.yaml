@@ -14,7 +14,6 @@ services:
     - K3S_DATASTORE_ENDPOINT=etcd
    # Increase quota to 2GB or 4GB to stop the immediate pressure
     - K3S_ETCD_QUOTA_BYTES=2147483648
-    privileged: true
 
 volumes:
   rancher-data:
