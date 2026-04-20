@@ -5,7 +5,33 @@ services:
       - postgres
       - redis
       - redis-cache
-    env_file: /docker/netbox/env/netbox.env
+#    env_file: /docker/netbox/env/netbox.env
+    environment:
+      # Database
+      DB_NAME: netbox
+      DB_USER: netbox
+      DB_PASSWORD: FU#@pac2ya
+      DB_HOST: postgres
+      DB_PORT: 5432
+
+      # Redis
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: redispassword
+
+      # Redis Cache
+      REDIS_CACHE_HOST: redis-cache
+      REDIS_CACHE_PORT: 6379
+      REDIS_CACHE_PASSWORD: redispassword
+
+      # NetBox core
+      SECRET_KEY: 4jVb6VioI0krLMYvk6B3eLx4sqJpahoTAf1NwY7TAuZ2l/A6NjYMaRlt7KyBZzg3bvw=
+      ALLOWED_HOSTS: "*"
+
+      # Superuser (auto-created on first run)
+      SUPERUSER_NAME: admin
+      SUPERUSER_EMAIL: bill@chikinpit.com
+      SUPERUSER_PASSWORD: M0nd!eu@ll0nsy
     user: "netbox:root"
     healthcheck:
       test: curl -f http://localhost:8080/login/ || exit 1
@@ -17,6 +43,7 @@ services:
       - /docker/netbox/netbox-media-files:/opt/netbox/netbox/media:rw
       - /docker/netbox/netbox-reports-files:/opt/netbox/netbox/reports:rw
       - /docker/netbox/netbox-scripts-files:/opt/netbox/netbox/scripts:rw
+    ports: "8000:8080"
   netbox-worker:
     <<: *netbox
     depends_on:
@@ -41,9 +68,13 @@ services:
       timeout: 30s
       interval: 10s
       retries: 5
-    env_file: /docker/netbox/env/postgres.env
+#    env_file: /docker/netbox/env/postgres.env
+    environment:
+      POSTGRES_DB: netbox
+      POSTGRES_USER: netbox
+      POSTGRES_PASSWORD: FU#@pac2ya
     volumes:
-      - /docker/netbox/netbox-postgres:/var/lib/postgresql
+      - /docker/netbox/netbox-postgres:/var/lib/postgresql/data
 
   # redis
   redis:
@@ -58,7 +89,9 @@ services:
       timeout: 3s
       interval: 1s
       retries: 5
-    env_file: /docker/netbox/env/redis.env
+#    env_file: /docker/netbox/env/redis.env
+    environment:
+      REDIS_PASSWORD: redispassword
     volumes:
       - /docker/netbox/netbox-redis-data:/data
   redis-cache:
@@ -68,7 +101,9 @@ services:
       - -c # this is to evaluate the $REDIS_PASSWORD from the env
       - valkey-server --requirepass $$REDIS_PASSWORD ## $$ because of docker-compose
     healthcheck: *redis-healthcheck
-    env_file: /docker/netbox/env/redis-cache.env
+#    env_file: /docker/netbox/env/redis-cache.env
+    environment:
+      REDIS_PASSWORD: redispassword
     volumes:
       - /docker/netbox/netbox-redis-cache-data:/data
 
