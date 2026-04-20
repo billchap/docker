@@ -43,7 +43,7 @@ services:
       - /docker/netbox/netbox-media-files:/opt/netbox/netbox/media:rw
       - /docker/netbox/netbox-reports-files:/opt/netbox/netbox/reports:rw
       - /docker/netbox/netbox-scripts-files:/opt/netbox/netbox/scripts:rw
-    ports: "8000:8080"
+    ports: ["8000:8080"]
   netbox-worker:
     <<: *netbox
     depends_on:
