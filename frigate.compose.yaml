@@ -23,9 +23,3 @@ services:
     environment:
       LIBVA_DRIVER_NAME: radeonsi
       FRIGATE_RTSP_PASSWORD: "M0nd!eu2ll0nsy"
-
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - capabilities: [gpu]
