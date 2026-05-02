@@ -1,27 +1,33 @@
 services:
   frigate:
     container_name: frigate
-    image: ghcr.io/blakeblackshear/frigate:stable-amd64
+    image: ghcr.io/blakeblackshear/frigate:stable
     privileged: true
     restart: unless-stopped
-    shm_size: "512mb"
+    shm_size: "256mb"
 
     devices:
+      - /dev/dri/card0:/dev/dri/card0
       - /dev/dri/renderD128:/dev/dri/renderD128  # Required for VAAPI (AMD iGPU)
+      - /dev/dxg:/dev/dxg
 
     volumes:
       - ./config:/config
       - frigate_data:/media/frigate
       - /etc/localtime:/etc/localtime:ro
+      - /usr/lib/wsl:/usr/lib/wsl
 
     ports:
+      - "8971:8971"
       - "5000:5000"   # Web UI
       - "8554:8554"   # RTSP restream
       - "8555:8555/tcp" # WebRTC
       - "8555:8555/udp"
 
     environment:
-      LIBVA_DRIVER_NAME: radeonsi
+      LIBVA_DRIVER_NAME: "d3d12"
+      MESA_LOADER_DRIVER_OVERRIDE: "ygem"
+      LD_LIBRARY_PATH: "/usr/lib/wsl/lib"
       FRIGATE_RTSP_PASSWORD: "M0nd!eu2ll0nsy"
 
 volumes:                       # ← This entire block is what's missing
