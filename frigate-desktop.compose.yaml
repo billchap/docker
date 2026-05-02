@@ -23,3 +23,8 @@ services:
     environment:
       LIBVA_DRIVER_NAME: radeonsi
       FRIGATE_RTSP_PASSWORD: "M0nd!eu2ll0nsy"
+
+volumes:                       # ← This entire block is what's missing
+  frigate_data:
+    external: true
+    name: frigate_data 
