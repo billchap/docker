@@ -1,0 +1,25 @@
+services:
+  frigate:
+    container_name: frigate
+    image: ghcr.io/blakeblackshear/frigate:stable
+    privileged: true
+    restart: unless-stopped
+    shm_size: "512mb"
+
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128  # Required for VAAPI (AMD iGPU)
+
+    volumes:
+      - ./config:/config
+      - frigate_data:/media/frigate
+      - /etc/localtime:/etc/localtime:ro
+
+    ports:
+      - "5000:5000"   # Web UI
+      - "8554:8554"   # RTSP restream
+      - "8555:8555/tcp" # WebRTC
+      - "8555:8555/udp"
+
+    environment:
+      LIBVA_DRIVER_NAME: radeonsi
+      FRIGATE_RTSP_PASSWORD: "M0nd!eu2ll0nsy"
