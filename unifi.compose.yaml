@@ -5,8 +5,8 @@ services:
     container_name: unifi-controller
     network_mode: host
     environment:
-      - PUID=1010
-      - PGID=1010
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Chicago
     volumes:
       - /docker/unifi:/config
