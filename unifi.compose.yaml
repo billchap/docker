@@ -3,21 +3,12 @@ services:
   unifi:
     image: jacobalberty/unifi:latest
     container_name: unifi-controller
-#    network_mode: host
+    network_mode: host
     environment:
       - DEBUG=true
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
-    ports:
-      - 8443:8443
-      - 8080:8080
-      - 3478:3478/udp
-      - 10001:10001/udp
-      - 1900:1900/udp
-      - 8843:8843
-      - 8880:8880
-      - 6789:6789
     volumes:
       - /docker/unifi:/config
     restart: unless-stopped
