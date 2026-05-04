@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   unifi:
-    image: lscr.io/linuxserver/unifi-network-application:10.3.58-ls128
+    image: jacobalberty/unifi:latest
     container_name: unifi-controller
 #    network_mode: host
     environment:
