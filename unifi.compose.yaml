@@ -5,6 +5,7 @@ services:
     container_name: unifi-controller
 #    network_mode: host
     environment:
+      - DEBUG=true
       - PUID=1000
       - PGID=1000
       - TZ=America/Chicago
