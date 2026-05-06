@@ -26,6 +26,6 @@ services:
       - CHOWN
       - SETUID
       - SETGID
-    securtiy_opt:
+    security_opt:
       - seccomp:unconfined
       - apparmor:unconfined
