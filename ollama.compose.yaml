@@ -1,0 +1,18 @@
+services:
+  ollama:
+    image: ollama/ollama:rocm
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - /docker/ollama:/root/.ollama
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    # Optional: Force a specific ROCm version for unsupported cards
+    # environment:
+    #   - HSA_OVERRIDE_GFX_VERSION=10.3.0 
+
+volumes:
+  ollama:
