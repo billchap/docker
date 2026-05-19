@@ -15,7 +15,7 @@ services:
     deploy:
       resources:
         limits:
-          memory: 8G                 # adjust based on your EQR7's RAM
+          memory: 12G                 # adjust based on your EQR7's RAM
 
 volumes:
   ollama_data:
