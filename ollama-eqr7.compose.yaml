@@ -1,0 +1,21 @@
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0          # listen on all interfaces, not just localhost
+      - OLLAMA_KEEP_ALIVE=-1          # keep model loaded indefinitely
+      - OLLAMA_MAX_LOADED_MODELS=1    # prevent memory thrashing
+      - OLLAMA_REQUEST_TIMEOUT=300s   # 5-minute request timeout
+    deploy:
+      resources:
+        limits:
+          memory: 8G                 # adjust based on your EQR7's RAM
+
+volumes:
+  ollama_data:
