@@ -10,7 +10,7 @@ services:
       # Override env_file: SQLite path must point inside the container volume
       SQLITE_PATH: /app/data/homelab.db
     volumes:
-      - backend_data:/app/data
+      - /docker/backend_data:/app/data
     networks:
       - homelable
     # Required for ping-based status checks
