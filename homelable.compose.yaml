@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     restart: unless-stopped
-#    env_file:
-#      - .env
+    env_file:
+      - .env
     environment:
       # Override env_file: SQLite path must point inside the container volume
       SQLITE_PATH: /app/data/homelab.db
@@ -23,21 +23,21 @@ services:
       retries: 6
       start_period: 15s
 
-  mcp:
-    build:
-      context: ./mcp
-      dockerfile: Dockerfile.mcp
-    restart: unless-stopped
-    ports:
-      - "8091:8091"
+#  mcp:
+#    build:
+#      context: ./mcp
+#      dockerfile: Dockerfile.mcp
+#    restart: unless-stopped
+#    ports:
+#      - "8091:8091"
 #    env_file:
 #      - .env
-    environment:
-      BACKEND_URL: "http://backend:8090"
-    depends_on:
-      - backend
-    networks:
-      - homelable
+#    environment:
+#      BACKEND_URL: "http://backend:8090"
+#    depends_on:
+#      - backend
+#    networks:
+#      - homelable
 
   frontend:
     build:
