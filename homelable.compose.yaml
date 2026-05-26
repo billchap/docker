@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     restart: unless-stopped
-    env_file:
-      - .env
+#    env_file:
+#      - .env
     environment:
       # Override env_file: SQLite path must point inside the container volume
       SQLITE_PATH: /app/data/homelab.db
