@@ -1,0 +1,59 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Override env_file: SQLite path must point inside the container volume
+      SQLITE_PATH: /app/data/homelab.db
+    volumes:
+      - backend_data:/app/data
+    networks:
+      - homelable
+    # Required for ping-based status checks
+    cap_add:
+      - NET_RAW
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+  mcp:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile.mcp
+    restart: unless-stopped
+    ports:
+      - "8091:8091"
+    env_file:
+      - .env
+    environment:
+      BACKEND_URL: "http://backend:8090"
+    depends_on:
+      - backend
+    networks:
+      - homelable
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - homelable
+
+volumes:
+  backend_data:
+
+networks:
+  homelable:
+    driver: bridge
