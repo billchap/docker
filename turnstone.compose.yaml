@@ -81,6 +81,8 @@ services:
         turnstone-channel
         --http-host=0.0.0.0
         $${TURNSTONE_DISCORD_GUILD:+--discord-guild $$TURNSTONE_DISCORD_GUILD}
+networks:
+
 
 volumes:
   tls-certs:
