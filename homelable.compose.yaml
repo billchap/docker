@@ -5,7 +5,7 @@ services:
     env_file:
       - .env
     environment:
-      SQLITE_PATH: /docker/homelable/app/data/homelab.db
+      SQLITE_PATH: /app/data/homelab.db
       CORS_ORIGINS: '["http://localhost:3000"]'
     volumes:
       - /docker/homelable/backend_data:/app/data
