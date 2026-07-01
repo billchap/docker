@@ -10,7 +10,9 @@ services:
     volumes:
       - /docker/homelable/backend_data:/app/data
     networks:
-      - homelable
+      homelable:
+        aliases:
+          - backend
     cap_add:
       - NET_RAW
 
