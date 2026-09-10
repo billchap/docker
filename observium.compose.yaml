@@ -29,7 +29,7 @@ services:
 
     environment:
       - OBSERVIUM_ADMIN_USER=bill
-      - OBSERVIUM_ADMIN_PASS=FU#@pac2ya
+      - OBSERVIUM_ADMIN_PASS=passw0rd
       - OBSERVIUM_DB_HOST=db
       - OBSERVIUM_DB_NAME=observium
       - OBSERVIUM_DB_USER=observium
