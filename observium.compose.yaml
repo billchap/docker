@@ -5,9 +5,9 @@ services:
   db:
     image: mariadb:11.6
     environment:
-      - MYSQL_ROOT_PASSWORD=M0nd!eu@ll0nsy
+      - MYSQL_ROOT_PASSWORD=passw0rd
       - MYSQL_USER=observium
-      - MYSQL_PASSWORD=M0nd!eu@ll0nsy
+      - MYSQL_PASSWORD=passw0rd
       - MYSQL_DATABASE=observium
       - TZ=America/Chicago
     volumes:
@@ -33,8 +33,8 @@ services:
       - OBSERVIUM_DB_HOST=db
       - OBSERVIUM_DB_NAME=observium
       - OBSERVIUM_DB_USER=observium
-      - OBSERVIUM_DB_PASS=M0nd!eu@ll0sny
-      - OBSERVIUM_BASE_URL=http://observium.chikinpit.com:8888
+      - OBSERVIUM_DB_PASS=passw0rd
+      - OBSERVIUM_BASE_URL=http://obs.chikinpit.com:8888
       - TZ=America/Chicago
     volumes:
       - /docker/observium/logs:/opt/observium/logs
