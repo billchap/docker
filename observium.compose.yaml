@@ -18,7 +18,7 @@ services:
 
   app:
     # Launch published image.
-    image: tmp:latest # mbixtech/observium:latest
+    image: mbixtech/observium:latest # mbixtech/observium:latest
 
     # Or build image:
     # build:
