@@ -28,7 +28,7 @@ services:
     #     - FETCH_VERSION=latest
 
     environment:
-      - OBSERVIUM_ADMIN_USER=bill
+      - OBSERVIUM_ADMIN_USER=admin
       - OBSERVIUM_ADMIN_PASS=passw0rd
       - OBSERVIUM_DB_HOST=db
       - OBSERVIUM_DB_NAME=observium
