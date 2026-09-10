@@ -11,7 +11,7 @@ services:
       - MYSQL_DATABASE=observium
       - TZ=America/Chicago
     volumes:
-      - ./data:/var/lib/mysql
+      - /docker/observium/db:/var/lib/mysql
     networks:
       - back-tier
     restart: unless-stopped
@@ -37,8 +37,8 @@ services:
       - OBSERVIUM_BASE_URL=http://observium.chikinpit.com:8888
       - TZ=America/Chicago
     volumes:
-      - ./logs:/opt/observium/logs
-      - ./rrd:/opt/observium/rrd
+      - /docker/observium/logs:/opt/observium/logs
+      - /docker/observium/rrd:/opt/observium/rrd
     networks:
       - back-tier
     ports:
