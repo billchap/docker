@@ -1,15 +1,15 @@
 # Example Docker Compose file for Observium
-# Maintained by somsakc@hotmail.com
+# 
 
 services:
   db:
     image: mariadb:11.6
     environment:
-      - MYSQL_ROOT_PASSWORD=passw0rd
+      - MYSQL_ROOT_PASSWORD=M0nd!eu@ll0nsy
       - MYSQL_USER=observium
-      - MYSQL_PASSWORD=passw0rd
+      - MYSQL_PASSWORD=M0nd!eu@ll0nsy
       - MYSQL_DATABASE=observium
-      - TZ=Asia/Bangkok
+      - TZ=America/Chicago
     volumes:
       - ./data:/var/lib/mysql
     networks:
@@ -28,14 +28,14 @@ services:
     #     - FETCH_VERSION=latest
 
     environment:
-      - OBSERVIUM_ADMIN_USER=admin
-      - OBSERVIUM_ADMIN_PASS=passw0rd
+      - OBSERVIUM_ADMIN_USER=bill
+      - OBSERVIUM_ADMIN_PASS=FU#@pac2ya
       - OBSERVIUM_DB_HOST=db
       - OBSERVIUM_DB_NAME=observium
       - OBSERVIUM_DB_USER=observium
-      - OBSERVIUM_DB_PASS=passw0rd
-      - OBSERVIUM_BASE_URL=http://yourservername:8888
-      - TZ=Asia/Bangkok
+      - OBSERVIUM_DB_PASS=M0nd!eu@ll0sny
+      - OBSERVIUM_BASE_URL=http://observium.chikinpit.com:8888
+      - TZ=America/Chicago
     volumes:
       - ./logs:/opt/observium/logs
       - ./rrd:/opt/observium/rrd
