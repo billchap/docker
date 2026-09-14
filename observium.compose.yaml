@@ -34,7 +34,7 @@ services:
       - OBSERVIUM_DB_NAME=observium
       - OBSERVIUM_DB_USER=observium
       - OBSERVIUM_DB_PASS=passw0rd
-      - OBSERVIUM_BASE_URL=http://obs.chikinpit.com:8888
+      - OBSERVIUM_BASE_URL=http://obs.chikinpit.com
       - TZ=America/Chicago
     volumes:
       - /docker/observium/logs:/opt/observium/logs
