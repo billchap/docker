@@ -7,7 +7,7 @@ services:
       - TZ=America/Chicago
     volumes:
       - /docker/checkmk:/omd/sites
-    tmpfs:I 
+    tmpfs:
       - /opt/omd/sites/cmk/tmp:uid=1000,gid=1000
     ports:
       - 8080:5000
