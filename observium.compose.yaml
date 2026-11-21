@@ -46,6 +46,8 @@ services:
     restart: unless-stopped
     depends_on:
       - db
+    labels:
+      - backup.stop=true
 
 networks:
   back-tier:
